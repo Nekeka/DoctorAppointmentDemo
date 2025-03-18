@@ -10,7 +10,7 @@ using MyDoctorAppointment.Data.Configuration;
 
 namespace DoctorAppointmentDemo.Data.Repositories
 {
-    internal class PatientRepository : GenericRepository<Patient>, IPatientRepository
+    public class PatientRepository : GenericRepository<Patient>, IPatientRepository
     {
         public override string Path { get; set; }
 
