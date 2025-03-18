@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyDoctorAppointment.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,14 @@ namespace DoctorAppointmentDemo.Service.Interfaces
 {
     internal interface IPatientService
     {
+        Patient Create(Patient patient);
+
+        IEnumerable<Patient> GetAll();
+
+        Patient? Get(int id);
+
+        bool Delete(int id);
+
+        Patient Update(int id, Patient patient);
     }
 }
