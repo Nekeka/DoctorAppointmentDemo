@@ -7,6 +7,7 @@ namespace MyDoctorAppointment
     public class DoctorAppointment
     {
         private readonly IDoctorService _doctorService;
+        
 
         public DoctorAppointment()
         {
