@@ -26,11 +26,8 @@ namespace DoctorAppointmentDemo.Service.Services
         }
 
         public Appointment Create(Appointment appointment)
-        {
-            
-            return _appointmentRepository.Create(appointment);
-           
-            
+        {      
+            return _appointmentRepository.Create(appointment);   
         }
 
         public bool Delete(int id)

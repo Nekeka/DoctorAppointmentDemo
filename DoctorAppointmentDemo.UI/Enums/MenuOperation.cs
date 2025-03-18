@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace DoctorAppointmentDemo.UI.Enums
 {
-
-    public enum Entities
+    public enum MenuOperations
     {
-        Doctor  = 1,
-        Appointment,
-        Patient,
+        Show_All = 1,
+        Create,
+        Read,
+        Update,
+        Delete,
         Exit
-            
+           
     }
 }

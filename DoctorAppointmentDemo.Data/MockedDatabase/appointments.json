@@ -1,0 +1,44 @@
+[
+  {
+    "Patient": {
+      "IllnessType": 5,
+      "AdditionalInfo": null,
+      "Address": null,
+      "Name": "Patient A",
+      "Surname": "",
+      "Phone": null,
+      "Email": null,
+      "Id": 0,
+      "CreatedAt": "0001-01-01T00:00:00",
+      "UpdatedAt": "0001-01-01T00:00:00"
+    },
+    "Doctor": null,
+    "DateTimeFrom": "0001-01-01T00:00:00",
+    "DateTimeTo": "0001-01-01T00:00:00",
+    "Description": null,
+    "Id": 1,
+    "CreatedAt": "2025-03-18T22:57:44.7635635+02:00",
+    "UpdatedAt": "0001-01-01T00:00:00"
+  },
+  {
+    "Patient": {
+      "IllnessType": 5,
+      "AdditionalInfo": null,
+      "Address": null,
+      "Name": "Patient B",
+      "Surname": "",
+      "Phone": null,
+      "Email": null,
+      "Id": 0,
+      "CreatedAt": "0001-01-01T00:00:00",
+      "UpdatedAt": "0001-01-01T00:00:00"
+    },
+    "Doctor": null,
+    "DateTimeFrom": "0001-01-01T00:00:00",
+    "DateTimeTo": "0001-01-01T00:00:00",
+    "Description": "Опис",
+    "Id": 2,
+    "CreatedAt": "2025-03-18T22:58:51.2915171+02:00",
+    "UpdatedAt": "0001-01-01T00:00:00"
+  }
+]
