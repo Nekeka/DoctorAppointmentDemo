@@ -22,7 +22,7 @@ namespace DoctorAppointmentDemo.UI
             var appointments = _appointmentService.GetAll();
             if (!appointments.Any())
             {
-                Console.WriteLine("No patients found.");
+                Console.WriteLine("No appointments found.");
                 return;
             }
 
@@ -34,7 +34,7 @@ namespace DoctorAppointmentDemo.UI
 
         private int GetAppointment()
         {
-            Console.Write("Enter patient ID:");
+            Console.Write("Enter appointment ID:");
             if (int.TryParse(Console.ReadLine(), out int id) && id >= 0 && id <= _appointmentService.GetAll().Count())
             {
 
@@ -86,7 +86,7 @@ namespace DoctorAppointmentDemo.UI
         public void Create()
         {
             _appointmentService.Create(GetNewAppointment());
-            Console.WriteLine("Patient added successfully");
+            Console.WriteLine("appointment added successfully");
         }
 
         public void Read()
@@ -95,7 +95,7 @@ namespace DoctorAppointmentDemo.UI
             if (id == -1) return;
 
             var appointment = _appointmentService.Get(id);
-            Console.WriteLine($"Patient: {appointment.Description}");
+            Console.WriteLine($"appointment: {appointment.Description}");
 
         }
 
@@ -105,7 +105,7 @@ namespace DoctorAppointmentDemo.UI
             if (id == -1) return;
 
             _appointmentService.Update(id, GetNewAppointment());
-            Console.WriteLine("Patient updated successfully");
+            Console.WriteLine("appointment updated successfully");
         }
 
         public void Delete()
@@ -116,7 +116,7 @@ namespace DoctorAppointmentDemo.UI
             _appointmentService.Delete(id);
 
 
-            Console.WriteLine("Patient deleted successfully");
+            Console.WriteLine("appointment deleted successfully");
         }
 
         public void ChooseOperation()
