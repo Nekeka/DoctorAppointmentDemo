@@ -40,5 +40,37 @@
     "Id": 2,
     "CreatedAt": "2025-03-18T22:58:51.2915171+02:00",
     "UpdatedAt": "0001-01-01T00:00:00"
+  },
+  {
+    "Patient": {
+      "IllnessType": 0,
+      "AdditionalInfo": null,
+      "Address": null,
+      "Name": "Patient 1",
+      "Surname": "",
+      "Phone": null,
+      "Email": null,
+      "Id": 2,
+      "CreatedAt": "2025-03-19T02:21:47.0732017+02:00",
+      "UpdatedAt": "0001-01-01T00:00:00"
+    },
+    "Doctor": {
+      "DoctorType": 1,
+      "Experience": 20,
+      "Salary": 0.0,
+      "Name": "Vasya",
+      "Surname": "Petrov",
+      "Phone": null,
+      "Email": null,
+      "Id": 2,
+      "CreatedAt": "2024-01-04T21:15:00.5742047+02:00",
+      "UpdatedAt": "0001-01-01T00:00:00"
+    },
+    "DateTimeFrom": "0001-01-01T00:00:00",
+    "DateTimeTo": "0001-01-01T00:00:00",
+    "Description": "New app",
+    "Id": 3,
+    "CreatedAt": "2025-03-19T03:50:32.2128565+02:00",
+    "UpdatedAt": "0001-01-01T00:00:00"
   }
 ]

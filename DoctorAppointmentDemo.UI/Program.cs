@@ -38,9 +38,13 @@ namespace MyDoctorAppointment
                 {
                     case Entities.Appointment:
                         Console.WriteLine("Appointments");
+                        Imanager<Appointment> imanager2 = new AppointmentManager();
+                        imanager2.ChooseOperation();
                         break;
                     case Entities.Doctor:
                         Console.WriteLine("Doctors");
+                        Imanager<Doctor> imanager1 = new DoctorManager();
+                        imanager1.ChooseOperation();
                         break;
                     case Entities.Patient:
                         Console.WriteLine("Patients");
