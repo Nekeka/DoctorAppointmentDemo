@@ -12,7 +12,7 @@ using DoctorAppointmentDemo.Service;
 using DoctorAppointmentDemo.Data.Repositories;
 namespace DoctorAppointmentDemo.Service;
 
-internal class PatientService : IPatientService
+public class PatientService : IPatientService
 {
     private readonly IPatientRepository _patientRepository;
 

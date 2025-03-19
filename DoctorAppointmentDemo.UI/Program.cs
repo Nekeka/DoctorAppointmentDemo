@@ -1,6 +1,9 @@
-﻿using DoctorAppointmentDemo.Service.Interfaces;
+﻿using DoctorAppointmentDemo.Service;
+using DoctorAppointmentDemo.Service.Interfaces;
 using DoctorAppointmentDemo.Service.Services;
+using DoctorAppointmentDemo.UI;
 using DoctorAppointmentDemo.UI.Enums;
+using MyDoctorAppointment.Data.Interfaces;
 using MyDoctorAppointment.Domain.Entities;
 using MyDoctorAppointment.Service.Interfaces;
 using MyDoctorAppointment.Service.Services;
@@ -9,58 +12,17 @@ namespace MyDoctorAppointment
 {
     public class DoctorAppointment
     {
-        private readonly IDoctorService _doctorService;
-        private readonly IAppointmentService _appointmentService;
-        
+        //private readonly IDoctorService _doctorService;
+        //private readonly IAppointmentService _appointmentService;
+        //private readonly IPatientService _patientService;
 
         public DoctorAppointment()
         {
-            _doctorService = new DoctorService();
-            _appointmentService = new AppointmentService();
+            //_doctorService = new DoctorService();
+            //_appointmentService = new AppointmentService();
+            //_patientService = new PatientService();    
         }
-        public void ChooseOpearation<T>()
-        {
-            Console.WriteLine("Menu:");
-            Console.WriteLine("1. Show all enties");
-            Console.WriteLine("2. Create");
-            Console.WriteLine("3. Read");
-            Console.WriteLine("4. Update");
-            Console.WriteLine("5. Delete");
-            Console.WriteLine("6. Exit");
-            Console.Write("Choose operation: ");
-
-            if (Enum.TryParse<MenuOperations>(Console.ReadLine(), out MenuOperations choice))
-            {
-                switch (choice)
-                {
-                    case MenuOperations.Show_All:
-                        Console.WriteLine("Show_All");
-                        break;
-                    case MenuOperations.Create:
-                        Console.WriteLine("Create");
-                        break;
-                    case MenuOperations.Read:
-                        Console.WriteLine("Read");
-                        break;
-                    case MenuOperations.Update:
-                        Console.WriteLine("Update");
-                        break;
-                    case MenuOperations.Delete:
-                        Console.WriteLine("Delete");
-                        break;
-                    case MenuOperations.Exit:
-                        Console.WriteLine("Exit");
-                        break;
-                    default:
-                        Console.WriteLine("wrong choice, try again");
-                        break;
-                }
-            }
-            else
-            {
-                Console.WriteLine("wrong choice, try again");
-            }
-        }
+        
         private void ChooseDataEntity()
         {
             Console.WriteLine("Choose data base");
@@ -69,6 +31,7 @@ namespace MyDoctorAppointment
             Console.WriteLine("3 - Patients");
             Console.WriteLine("4 - exit");
 
+            
             if (Enum.TryParse<Entities>(Console.ReadLine(), out Entities choice))
             {
                 switch (choice)
@@ -81,6 +44,8 @@ namespace MyDoctorAppointment
                         break;
                     case Entities.Patient:
                         Console.WriteLine("Patients");
+                        Imanager<Patient> imanager =new PatientManager();
+                        imanager.ChooseOperation();
                         break;
                     case Entities.Exit:
                         Console.WriteLine("exit");
@@ -99,13 +64,12 @@ namespace MyDoctorAppointment
 
         public void Menu()
         {
+            
             while (true)
             {
                 ChooseDataEntity();
             }
 
-
-            ////////////
             //Console.WriteLine("Current doctors list: ");
             //var docs = _doctorService.GetAll();
 
@@ -133,24 +97,7 @@ namespace MyDoctorAppointment
             //{
             //    Console.WriteLine(doc.Name);
             //}
-            //////////////
 
-            var appointment = new Appointment
-            {
-                Doctor = _doctorService.Get(1),
-                Patient = new Patient { Name = "Patient B", IllnessType = Domain.Enums.IllnessTypes.Ambulance },
-                Description = "Опис"
-
-
-            };
-            _appointmentService.Create(appointment);
-            
-            Console.WriteLine("Current appoinments:");
-            var appnts = _appointmentService.GetAll();
-            foreach (var appnt in appnts)
-            {
-                Console.WriteLine(appnt.Description);
-            }
         }
     }
 

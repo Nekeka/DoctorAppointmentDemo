@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DoctorAppointmentDemo.Service.Interfaces
 {
-    internal interface IPatientService
+    public interface IPatientService
     {
         Patient Create(Patient patient);
 
