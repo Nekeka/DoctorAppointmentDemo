@@ -1,40 +1,41 @@
-﻿using DoctorAppointmentDemo.Service.Interfaces;
-using DoctorAppointmentDemo.Service;
-using DoctorAppointmentDemo.UI.Enums;
-using MyDoctorAppointment.Domain.Entities;
+﻿using DoctorAppointmentDemo.UI.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MyDoctorAppointment.Service.Interfaces;
-using MyDoctorAppointment.Service.Services;
+using DoctorAppointmentDemo.Service.Interfaces;
+using DoctorAppointmentDemo.Service;
+using System.Transactions;
+using DoctorAppointmentDemo.Data;
+using MyDoctorAppointment.Domain.Entities;
 
-namespace DoctorAppointmentDemo.UI
+
+namespace DoctorAppointmentDemo.UI.Managers
 {
-    internal class DoctorManager : Imanager<Doctor>
+    internal class PatientManager : Imanager<Patient>
     {
-        private readonly IDoctorService _doctorService = new DoctorService();
+        private readonly IPatientService _patientService = new PatientService();
 
         public void ShowAll()
         {
-            var doctors = _doctorService.GetAll();
-            if (!doctors.Any())
+            var patients = _patientService.GetAll();
+            if (!patients.Any())
             {
-                Console.WriteLine("No Doctors found.");
+                Console.WriteLine("No patients found.");
                 return;
             }
 
-            foreach (var p in doctors)
+            foreach (var p in patients)
             {
                 Console.WriteLine($"id {p.Id}: {p.Name} {p.Surname}");
             }
         }
 
-        private int GetDoctorId()
+        private int GetPatientId()
         {
-            Console.Write("Enter Doctor ID:");
-            if (int.TryParse(Console.ReadLine(), out int id) && id >= 0 && id <= _doctorService.GetAll().Count())
+            Console.Write("Enter patient ID:");
+            if (int.TryParse(Console.ReadLine(), out int id) && id >= 0 && id <= _patientService.GetAll().Count())
             {
 
                 return id;
@@ -43,7 +44,7 @@ namespace DoctorAppointmentDemo.UI
             return 0;
         }
 
-        private Doctor GetNewDoctortData()
+        private Patient GetNewPatientData()
         {
             Console.Write("Enter name: ");
             string name = Console.ReadLine();
@@ -51,43 +52,43 @@ namespace DoctorAppointmentDemo.UI
             Console.Write("Enter surname: ");
             string surname = Console.ReadLine();
 
-            return new Doctor { Name = name, Surname = surname };
+            return new Patient { Name = name, Surname = surname };
         }
 
         public void Create()
         {
-            _doctorService.Create(GetNewDoctortData());
-            Console.WriteLine("Doctor added successfully");
+            _patientService.Create(GetNewPatientData());
+            Console.WriteLine("Patient added successfully");
         }
 
         public void Read()
         {
-            int id = GetDoctorId();
+            int id = GetPatientId();
             if (id == -1) return;
 
-            var Doctor = _doctorService.Get(id);
-            Console.WriteLine($"Doctor: {Doctor.Name}");
+            var patient = _patientService.Get(id);
+            Console.WriteLine($"Patient: {patient.Name}");
 
         }
 
         public void Update()
         {
-            int id = GetDoctorId();
+            int id = GetPatientId();
             if (id == -1) return;
 
-            _doctorService.Update(id, GetNewDoctortData());
-            Console.WriteLine("Doctor updated successfully");
+            _patientService.Update(id, GetNewPatientData());
+            Console.WriteLine("Patient updated successfully");
         }
 
         public void Delete()
         {
-            int id = GetDoctorId();
+            int id = GetPatientId();
             if (id == -1) return;
 
-            _doctorService.Delete(id);
+            _patientService.Delete(id);
 
 
-            Console.WriteLine("Doctor deleted successfully");
+            Console.WriteLine("Patient deleted successfully");
         }
 
         public void ChooseOperation()
@@ -104,7 +105,7 @@ namespace DoctorAppointmentDemo.UI
                 Console.WriteLine("6. Exit");
                 Console.Write("Choose operation: ");
 
-                if (!Enum.TryParse<MenuOperations>(Console.ReadLine(), out MenuOperations choice))
+                if (!Enum.TryParse(Console.ReadLine(), out MenuOperations choice))
                 {
                     Console.WriteLine("Invalid choice, try again.");
                     continue;

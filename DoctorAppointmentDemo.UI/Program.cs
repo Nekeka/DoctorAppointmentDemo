@@ -3,6 +3,7 @@ using DoctorAppointmentDemo.Service.Interfaces;
 using DoctorAppointmentDemo.Service.Services;
 using DoctorAppointmentDemo.UI;
 using DoctorAppointmentDemo.UI.Enums;
+using DoctorAppointmentDemo.UI.Managers;
 using MyDoctorAppointment.Data.Interfaces;
 using MyDoctorAppointment.Domain.Entities;
 using MyDoctorAppointment.Service.Interfaces;
@@ -12,15 +13,8 @@ namespace MyDoctorAppointment
 {
     public class DoctorAppointment
     {
-        //private readonly IDoctorService _doctorService;
-        //private readonly IAppointmentService _appointmentService;
-        //private readonly IPatientService _patientService;
-
         public DoctorAppointment()
-        {
-            //_doctorService = new DoctorService();
-            //_appointmentService = new AppointmentService();
-            //_patientService = new PatientService();    
+        { 
         }
         
         private void ChooseDataEntity()

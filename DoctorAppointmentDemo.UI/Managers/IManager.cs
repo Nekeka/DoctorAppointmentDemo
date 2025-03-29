@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DoctorAppointmentDemo.UI
+namespace DoctorAppointmentDemo.UI.Managers
 {
-    internal interface Imanager<out T> where T: Auditable
+    internal interface Imanager<out T> where T : Auditable
     {
         void ShowAll();
         void Create();

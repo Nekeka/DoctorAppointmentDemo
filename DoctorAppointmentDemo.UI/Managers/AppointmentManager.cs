@@ -11,7 +11,7 @@ using DoctorAppointmentDemo.Service.Services;
 using MyDoctorAppointment.Service.Interfaces;
 using MyDoctorAppointment.Service.Services;
 
-namespace DoctorAppointmentDemo.UI
+namespace DoctorAppointmentDemo.UI.Managers
 {
     internal class AppointmentManager : Imanager<Appointment>
     {
@@ -133,7 +133,7 @@ namespace DoctorAppointmentDemo.UI
                 Console.WriteLine("6. Exit");
                 Console.Write("Choose operation: ");
 
-                if (!Enum.TryParse<MenuOperations>(Console.ReadLine(), out MenuOperations choice))
+                if (!Enum.TryParse(Console.ReadLine(), out MenuOperations choice))
                 {
                     Console.WriteLine("Invalid choice, try again.");
                     continue;
