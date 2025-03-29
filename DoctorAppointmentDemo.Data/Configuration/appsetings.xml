@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Database>
+  <Doctors>
+    <LastId>0</LastId>
+    <Path>..\..\..\..\DoctorAppointmentDemo\DoctorAppointmentDemo.Data\MockedDatabase\doctors.json</Path>
+  </Doctors>
+  <Patients>
+    <LastId>0</LastId>
+    <Path>..\..\..\..\DoctorAppointmentDemo\DoctorAppointmentDemo.Data\MockedDatabase\patients.json</Path>
+  </Patients>
+  <Appointments>
+    <LastId>0</LastId>
+    <Path>..\..\..\..\DoctorAppointmentDemo\DoctorAppointmentDemo.Data\MockedDatabase\appointments.json</Path>
+  </Appointments>
+</Database>

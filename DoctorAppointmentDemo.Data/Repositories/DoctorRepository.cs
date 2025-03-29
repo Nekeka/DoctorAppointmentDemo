@@ -28,7 +28,7 @@ namespace MyDoctorAppointment.Data.Repositories
             dynamic result = ReadFromAppSettings();
             result.Database.Doctors.LastId = LastId;
 
-            File.WriteAllText(Constants.AppSettingsPath, result.ToString());
+            File.WriteAllText(Constants.JsonAppSettingsPath, result.ToString());
         }
     }
 }

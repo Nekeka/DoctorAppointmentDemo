@@ -60,6 +60,11 @@ namespace MyDoctorAppointment
 
         }
 
+        private void ChooseDataType()
+        {
+
+        }
+
         public void Menu()
         {
             
@@ -67,35 +72,6 @@ namespace MyDoctorAppointment
             {
                 ChooseDataEntity();
             }
-
-            //Console.WriteLine("Current doctors list: ");
-            //var docs = _doctorService.GetAll();
-
-            //foreach (var doc in docs)
-            //{
-            //    Console.WriteLine(doc.Name);
-            //}
-
-            //Console.WriteLine("Adding doctor: ");
-
-            //var newDoctor = new Doctor
-            //{
-            //    Name = "Vasya",
-            //    Surname = "Petrov",
-            //    Experience = 20,
-            //    DoctorType = Domain.Enums.DoctorTypes.Dentist
-            //};
-
-            //_doctorService.Create(newDoctor);
-
-            //Console.WriteLine("Current doctors list: ");
-            //docs = _doctorService.GetAll();
-
-            //foreach (var doc in docs)
-            //{
-            //    Console.WriteLine(doc.Name);
-            //}
-
         }
     }
 
