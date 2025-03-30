@@ -8,19 +8,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DoctorAppointmentDemo.Service.Interfaces;
 
 namespace DoctorAppointmentDemo.Data.Repositories
 {
     public class AppointmentRepository : GenericRepository<Appointment>, IAppointmentRepository
     {
-
+        private readonly ISerializationService serializationService;
         public override string Path { get; set; }
 
         public override int LastId { get; set; }
 
-        public AppointmentRepository()
+        public AppointmentRepository(string appSettings, ISerializationService serializationService) : base(appSettings, serializationService)
         {
-            dynamic result = ReadFromAppSettings();
+            this.serializationService = serializationService;
+
+            var result = ReadFromAppSettings();
 
             Path = result.Database.Appointments.Path;
            
@@ -34,11 +37,11 @@ namespace DoctorAppointmentDemo.Data.Repositories
 
         protected override void SaveLastId()
         {
-            dynamic result = ReadFromAppSettings();
+            var result = ReadFromAppSettings();
             result.Database.Appointments.LastId = LastId;
 
-            File.WriteAllText(Constants.JsonAppSettingsPath, result.ToString());
-            
+            serializationService.Serialize(AppSettings, result);
+
         }
     }
 }

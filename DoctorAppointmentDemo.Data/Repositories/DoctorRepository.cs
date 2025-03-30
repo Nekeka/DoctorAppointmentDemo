@@ -1,4 +1,5 @@
-﻿using MyDoctorAppointment.Data.Configuration;
+﻿using DoctorAppointmentDemo.Service.Interfaces;
+using MyDoctorAppointment.Data.Configuration;
 using MyDoctorAppointment.Data.Interfaces;
 using MyDoctorAppointment.Domain.Entities;
 
@@ -6,13 +7,16 @@ namespace MyDoctorAppointment.Data.Repositories
 {
     public class DoctorRepository : GenericRepository<Doctor>, IDoctorRepository
     {
+        private readonly ISerializationService serializationService;
         public override string Path { get; set; }
 
         public override int LastId { get; set; }
 
-        public DoctorRepository()
+        public DoctorRepository(string appSettings, ISerializationService serializationService) : base(appSettings, serializationService)
         {
-            dynamic result = ReadFromAppSettings();
+            this.serializationService = serializationService;
+
+            var result = ReadFromAppSettings();
 
             Path = result.Database.Doctors.Path;
             LastId = result.Database.Doctors.LastId;
@@ -25,10 +29,11 @@ namespace MyDoctorAppointment.Data.Repositories
 
         protected override void SaveLastId()
         {
-            dynamic result = ReadFromAppSettings();
+            var result = ReadFromAppSettings();
             result.Database.Doctors.LastId = LastId;
 
-            File.WriteAllText(Constants.JsonAppSettingsPath, result.ToString());
+            serializationService.Serialize(AppSettings, result);
         }
+
     }
 }

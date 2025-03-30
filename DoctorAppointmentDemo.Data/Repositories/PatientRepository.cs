@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MyDoctorAppointment.Data.Configuration;
+using DoctorAppointmentDemo.Service.Interfaces;
 
 namespace DoctorAppointmentDemo.Data.Repositories
 {
@@ -15,10 +16,12 @@ namespace DoctorAppointmentDemo.Data.Repositories
         public override string Path { get; set; }
 
         public override int LastId { get; set; }
+        private readonly ISerializationService serializationService;
 
-        public PatientRepository()
+        public PatientRepository(string appSettings, ISerializationService serializationService) : base(appSettings, serializationService)
         {
-            dynamic result = ReadFromAppSettings();
+            this.serializationService = serializationService;
+            var result = ReadFromAppSettings();
 
             Path = result.Database.Patients.Path;
             LastId = result.Database.Patients.LastId;
@@ -31,10 +34,10 @@ namespace DoctorAppointmentDemo.Data.Repositories
 
         protected override void SaveLastId()
         {
-            dynamic result = ReadFromAppSettings();
+            var result = ReadFromAppSettings();
             result.Database.Patients.LastId = LastId;
 
-            File.WriteAllText(Constants.JsonAppSettingsPath, result.ToString());
+            serializationService.Serialize(AppSettings, result);
         }
     }
 }

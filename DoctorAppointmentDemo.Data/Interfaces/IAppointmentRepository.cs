@@ -10,5 +10,6 @@ namespace DoctorAppointmentDemo.Data.Interfaces
 {
     public interface IAppointmentRepository : IGenericRepository<Appointment>
     {
+
     }
 }
