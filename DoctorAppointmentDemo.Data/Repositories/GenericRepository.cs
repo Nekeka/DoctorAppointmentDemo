@@ -1,5 +1,4 @@
-﻿using DoctorAppointmentDemo.Service.Interfaces;
-using MyDoctorAppointment.Data.Configuration;
+﻿using DoctorAppointmentDemo.Data.Interfaces;
 using MyDoctorAppointment.Data.Interfaces;
 using MyDoctorAppointment.Domain.Entities;
 using Newtonsoft.Json;

@@ -20,9 +20,9 @@ namespace DoctorAppointmentDemo.Service.Services
        
 
 
-        public AppointmentService()
+        public AppointmentService(string appSettings, ISerializationService serializationService)
         {
-            _appointmentRepository = new AppointmentRepository();
+            _appointmentRepository = new AppointmentRepository(appSettings,  serializationService);
         }
 
         public Appointment Create(Appointment appointment)

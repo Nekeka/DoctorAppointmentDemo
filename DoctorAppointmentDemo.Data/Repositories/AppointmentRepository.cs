@@ -1,14 +1,12 @@
 ﻿using DoctorAppointmentDemo.Data.Interfaces;
 using MyDoctorAppointment.Data.Interfaces;
 using MyDoctorAppointment.Data.Repositories;
-using MyDoctorAppointment.Data.Configuration;
 using MyDoctorAppointment.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DoctorAppointmentDemo.Service.Interfaces;
 
 namespace DoctorAppointmentDemo.Data.Repositories
 {

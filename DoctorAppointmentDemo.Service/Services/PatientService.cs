@@ -16,9 +16,9 @@ public class PatientService : IPatientService
 {
     private readonly IPatientRepository _patientRepository;
 
-    public PatientService()
+    public PatientService(string appSettings, ISerializationService serializationService)
     {
-        _patientRepository = new PatientRepository();
+        _patientRepository = new PatientRepository( appSettings,  serializationService);
     }
 
     public Patient Create(Patient patient)

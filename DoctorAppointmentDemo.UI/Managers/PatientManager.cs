@@ -9,13 +9,24 @@ using DoctorAppointmentDemo.Service;
 using System.Transactions;
 using DoctorAppointmentDemo.Data;
 using MyDoctorAppointment.Domain.Entities;
+using DoctorAppointmentDemo.Data.Configuration;
+using DoctorAppointmentDemo.Service.Services;
+using Newtonsoft.Json;
 
 
 namespace DoctorAppointmentDemo.UI.Managers
 {
     internal class PatientManager : Imanager<Patient>
     {
-        private readonly IPatientService _patientService = new PatientService();
+        private readonly  IPatientService _patientService;
+
+        public PatientManager(string dataType)
+        {
+            if (dataType == "JSON")
+            {
+                IPatientService _patientService = new PatientService(Constants.JsonAppSettingsPath, new JsonDataSerializerService());
+            }
+        }
 
         public void ShowAll()
         {

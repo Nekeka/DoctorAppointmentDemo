@@ -2,20 +2,24 @@
 using DoctorAppointmentDemo.Service;
 using DoctorAppointmentDemo.UI.Enums;
 using MyDoctorAppointment.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MyDoctorAppointment.Service.Interfaces;
 using MyDoctorAppointment.Service.Services;
+using DoctorAppointmentDemo.Service.Services;
+using DoctorAppointmentDemo.Data.Configuration;
 
 namespace DoctorAppointmentDemo.UI.Managers
 {
     internal class DoctorManager : Imanager<Doctor>
     {
-        private readonly IDoctorService _doctorService = new DoctorService();
+        private readonly IDoctorService _doctorService;
 
+        public DoctorManager(string dataType)
+        {
+            if (dataType == "JSON")
+            {
+                _doctorService = new DoctorService(Constants.JsonAppSettingsPath, new JsonDataSerializerService());
+            }
+        }
         public void ShowAll()
         {
             var doctors = _doctorService.GetAll();
@@ -27,7 +31,7 @@ namespace DoctorAppointmentDemo.UI.Managers
 
             foreach (var p in doctors)
             {
-                Console.WriteLine($"id {p.Id}: {p.Name} {p.Surname}");
+                Console.WriteLine($"{p.Name} {p.Surname}");
             }
         }
 

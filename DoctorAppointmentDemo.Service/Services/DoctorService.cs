@@ -1,7 +1,11 @@
-﻿using MyDoctorAppointment.Data.Interfaces;
+﻿using DoctorAppointmentDemo.Service.Extensions;
+using DoctorAppointmentDemo.Data.Interfaces;
+using MyDoctorAppointment.Data.Interfaces;
 using MyDoctorAppointment.Data.Repositories;
 using MyDoctorAppointment.Domain.Entities;
 using MyDoctorAppointment.Service.Interfaces;
+using MyDoctorAppointment.Service.ViewModels;
+
 
 namespace MyDoctorAppointment.Service.Services
 {
@@ -9,9 +13,9 @@ namespace MyDoctorAppointment.Service.Services
     {
         private readonly IDoctorRepository _doctorRepository;
 
-        public DoctorService()
+        public DoctorService(string appSettings, ISerializationService serializationService)
         {
-            _doctorRepository = new DoctorRepository();
+            _doctorRepository = new DoctorRepository(appSettings, serializationService);
         }
 
         public Doctor Create(Doctor doctor)
@@ -29,9 +33,11 @@ namespace MyDoctorAppointment.Service.Services
             return _doctorRepository.GetById(id);
         }
 
-        public IEnumerable<Doctor> GetAll()
+        public IEnumerable<DoctorViewModel> GetAll()
         {
-            return _doctorRepository.GetAll();
+            var doctors = _doctorRepository.GetAll();
+            var doctorViewModels = doctors.Select(x => x.ConvertTo());
+            return doctorViewModels;
         }
 
         public Doctor Update(int id, Doctor doctor)

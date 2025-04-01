@@ -2,11 +2,7 @@
 using DoctorAppointmentDemo.Service;
 using DoctorAppointmentDemo.UI.Enums;
 using MyDoctorAppointment.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DoctorAppointmentDemo.Data.Configuration;
 using DoctorAppointmentDemo.Service.Services;
 using MyDoctorAppointment.Service.Interfaces;
 using MyDoctorAppointment.Service.Services;
@@ -15,8 +11,18 @@ namespace DoctorAppointmentDemo.UI.Managers
 {
     internal class AppointmentManager : Imanager<Appointment>
     {
-        private readonly IAppointmentService _appointmentService = new AppointmentService();
+        private readonly IAppointmentService _appointmentService;
+        private readonly string dataType;
 
+       public AppointmentManager(string dataType)
+        {
+            this.dataType = dataType;
+            if (dataType == "JSON")
+            {
+                _appointmentService = new AppointmentService(Constants.JsonAppSettingsPath, new JsonDataSerializerService());
+            } 
+                
+        }
         public void ShowAll()
         {
             var appointments = _appointmentService.GetAll();
@@ -46,9 +52,14 @@ namespace DoctorAppointmentDemo.UI.Managers
 
         private Appointment GetNewAppointment()
         {
-            IDoctorService doctors = new DoctorService();
-            IPatientService patients = new PatientService();
+            IDoctorService? doctors = null;
+            IPatientService? patients = null;
 
+            if (dataType == "JSON")
+            {
+                doctors = new DoctorService(Constants.JsonAppSettingsPath, new JsonDataSerializerService());
+                patients = new PatientService(Constants.JsonAppSettingsPath, new JsonDataSerializerService());
+            }      
             Console.Write("Enter description:");
             string desc = Console.ReadLine();
 

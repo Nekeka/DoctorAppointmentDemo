@@ -1,13 +1,17 @@
-﻿using DoctorAppointmentDemo.Service.Interfaces;
-using MyDoctorAppointment.Data.Configuration;
+﻿using DoctorAppointmentDemo.Data.Interfaces;
 using MyDoctorAppointment.Data.Interfaces;
 using MyDoctorAppointment.Domain.Entities;
+
 
 namespace MyDoctorAppointment.Data.Repositories
 {
     public class DoctorRepository : GenericRepository<Doctor>, IDoctorRepository
     {
         private readonly ISerializationService serializationService;
+        private string appSettings;
+        private ISerializationService serializationService1;
+        private ISerializationService serializationService2;
+
         public override string Path { get; set; }
 
         public override int LastId { get; set; }

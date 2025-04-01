@@ -17,8 +17,10 @@ namespace MyDoctorAppointment
         { 
         }
         
-        private void ChooseDataEntity()
+        private void ChooseDataEntity(string dataType)
         {
+
+
             Console.WriteLine("Choose data base");
             Console.WriteLine("1 - Doctors");
             Console.WriteLine("2 - Appointments");
@@ -32,17 +34,17 @@ namespace MyDoctorAppointment
                 {
                     case Entities.Appointment:
                         Console.WriteLine("Appointments");
-                        Imanager<Appointment> imanager2 = new AppointmentManager();
+                        Imanager<Appointment> imanager2 = new AppointmentManager(dataType);
                         imanager2.ChooseOperation();
                         break;
                     case Entities.Doctor:
                         Console.WriteLine("Doctors");
-                        Imanager<Doctor> imanager1 = new DoctorManager();
+                        Imanager<Doctor> imanager1 = new DoctorManager(dataType);
                         imanager1.ChooseOperation();
                         break;
                     case Entities.Patient:
                         Console.WriteLine("Patients");
-                        Imanager<Patient> imanager =new PatientManager();
+                        Imanager<Patient> imanager =new PatientManager(dataType);
                         imanager.ChooseOperation();
                         break;
                     case Entities.Exit:
@@ -59,10 +61,22 @@ namespace MyDoctorAppointment
             }
 
         }
-
-        private void ChooseDataType()
+        //!!!!!!!!! заменить на enum
+        private string ChooseDataType()
         {
+            while (true)
+            {
+                Console.WriteLine("Type to select file.\n 1 - for JSON\n 2 - for XML");
 
+                string choice = Console.ReadLine();
+
+                if (choice == "1")
+                    return "JSON";
+                else if (choice == "2")
+                    return "XML";
+
+                Console.WriteLine("Error. Try again");
+            }
         }
 
         public void Menu()
@@ -70,7 +84,7 @@ namespace MyDoctorAppointment
             
             while (true)
             {
-                ChooseDataEntity();
+                ChooseDataEntity(this.ChooseDataType());
             }
         }
     }
