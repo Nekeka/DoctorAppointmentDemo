@@ -39,7 +39,8 @@ namespace DoctorAppointmentDemo.Service.Extensions
                 Email = doctor.Email,
                 DoctorType = doctorType,
                 Experience = doctor.Experience,
-                Salary = doctor.Salary
+                Salary = doctor.Salary,
+                Id = doctor.Id
             };
         }
     }

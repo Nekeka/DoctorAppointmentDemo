@@ -15,5 +15,7 @@
 		public byte Experience { get; set; }
 
 		public decimal Salary { get; set; }
+
+		public int Id { get; set; }
 	}
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DoctorAppointmentDemo.Service.ViewModels
 {
-    internal class AppointmentViewModel
+    public class AppointmentViewModel
     {
+        public string? Description { get; set; }
     }
 }
