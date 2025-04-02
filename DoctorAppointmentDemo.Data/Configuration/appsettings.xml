@@ -3,15 +3,15 @@
   <Database>
   <Doctors>
     <LastId>0</LastId>
-    <Path>..\..\..\..\DoctorAppointmentDemo\DoctorAppointmentDemo.Data\MockedDatabase\doctors.json</Path>
+    <Path>D:\Projects\Hillel\DoctorAppointmentDemo\DoctorAppointmentDemo.Data\MockedDatabase\doctors.xml</Path>
   </Doctors>
   <Patients>
     <LastId>0</LastId>
-    <Path>..\..\..\..\DoctorAppointmentDemo\DoctorAppointmentDemo.Data\MockedDatabase\patients.json</Path>
+    <Path>..\..\..\..\DoctorAppointmentDemo\DoctorAppointmentDemo.Data\MockedDatabase\patients.xml</Path>
   </Patients>
   <Appointments>
     <LastId>0</LastId>
-    <Path>..\..\..\..\DoctorAppointmentDemo\DoctorAppointmentDemo.Data\MockedDatabase\appointments.json</Path>
+    <Path>..\..\..\..\DoctorAppointmentDemo\DoctorAppointmentDemo.Data\MockedDatabase\appointments.xml</Path>
   </Appointments>
 </Database>
 </Repository>
