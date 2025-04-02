@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Database>
+<Repository xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Database>
   <Doctors>
     <LastId>0</LastId>
     <Path>..\..\..\..\DoctorAppointmentDemo\DoctorAppointmentDemo.Data\MockedDatabase\doctors.json</Path>
@@ -13,3 +14,4 @@
     <Path>..\..\..\..\DoctorAppointmentDemo\DoctorAppointmentDemo.Data\MockedDatabase\appointments.json</Path>
   </Appointments>
 </Database>
+</Repository>

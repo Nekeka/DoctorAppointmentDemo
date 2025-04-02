@@ -19,6 +19,10 @@ namespace DoctorAppointmentDemo.UI.Managers
             {
                 _doctorService = new DoctorService(Constants.JsonAppSettingsPath, new JsonDataSerializerService());
             }
+            else if (dataType == "XML")
+            {
+                _doctorService = new DoctorService(Constants.XmlAppSettingsPath, new XmlDataSerializationService());
+            }
         }
         public void ShowAll()
         {

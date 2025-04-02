@@ -22,10 +22,8 @@ namespace MyDoctorAppointment.Data.Repositories
         {
             source.Id = ++LastId;
             source.CreatedAt = DateTime.Now;
-
-            //File.WriteAllText(Path, JsonConvert.SerializeObject(GetAll().Append(source), Formatting.Indented));
            
-            var enteties = GetAll().Append(source).ToList(); // что за тип? IEnumerable<TSource>
+            var enteties = GetAll().Append(source).ToList(); //IEnumerable<TSource>
 
             SerializationService.Serialize(Path, enteties);
             SaveLastId();
@@ -37,8 +35,6 @@ namespace MyDoctorAppointment.Data.Repositories
         {
             if (GetById(id) is null)
                 return false;
-
-            //File.WriteAllText(Path, JsonConvert.SerializeObject(GetAll().Where(x => x.Id != id), Formatting.Indented));
             SerializationService.Serialize(Path, GetAll().Where(x => x.Id != id));
 
             return true;
