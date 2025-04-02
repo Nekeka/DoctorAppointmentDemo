@@ -41,9 +41,11 @@ namespace MyDoctorAppointment.Data.Repositories
         }
 
         public IEnumerable<TSource> GetAll()
-        {   
-            return SerializationService.Deserialize<IEnumerable<TSource>>(Path);
+        {
+            Console.WriteLine($"Path {Path}");
+            return SerializationService.Deserialize<IEnumerable<TSource>>(Path).ToList();
         }
+
 
         public TSource? GetById(int id)
         {

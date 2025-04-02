@@ -6,6 +6,12 @@ namespace DoctorAppointmentDemo.Service.Services
     {
         public T Deserialize<T>(string path)
         {
+            if (!File.Exists(path))
+            {
+                Console.WriteLine($"Path {path}");
+                throw new Exception("Нема файла");
+            }
+
             var serializer = new XmlSerializer(typeof(T));
             using (var stream = new FileStream(path, FileMode.OpenOrCreate))
             {

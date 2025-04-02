@@ -18,21 +18,4 @@
 		public string Path { get; set; }
 	}
 
-	//public class Appointments
-	//{
-	//    public int LastId { get; set; }
-	//    public string Path { get; set; }
-	//}
-
-	//public class Doctors
-	//{
-	//    public int LastId { get; set; }
-	//    public string Path { get; set; }
-	//}
-
-	//public class Patients
-	//{
-	//    public int LastId { get; set; }
-	//    public string Path { get; set; }
-	//}
 }
